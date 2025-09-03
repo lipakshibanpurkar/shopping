@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - Online Shopping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #3a86ff;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ff006e;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #3a86ff;
+        }
+        
+        .header-icons a {
+            margin-left: 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3a86ff;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2667cc;
+        }
+        
+        /* Categories Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .category-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .category-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        /* Products Section */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .product-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #3a86ff;
+            margin-bottom: 15px;
+        }
+        
+        .rupee-icon {
+            font-family: Arial, sans-serif;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        
+        .discount {
+            color: #38b000;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .rating {
+            color: #ff9e00;
+            margin-bottom: 15px;
+        }
+        
+        .product-link {
+            display: block;
+            margin-top: 10px;
+            color: #3a86ff;
+            font-size: 14px;
+        }
+        
+        /* Product Menu for Owners */
+        .product-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+        }
+        
+        .menu-toggle {
+            background: rgba(255, 255, 255, 0.9);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .menu-toggle:hover {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .menu-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 150px;
+            display: none;
+            overflow: hidden;
+            z-index: 100;
+        }
+        
+        .menu-dropdown.show {
+            display: block;
+        }
+        
+        .menu-item {
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .menu-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .menu-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .menu-item.edit {
+            color: #3a86ff;
+        }
+        
+        .menu-item.delete {
+            color: #ff006e;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .filter-title {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Clothing Subcategories */
+        .subcategories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .subcategory-btn {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .subcategory-btn.active {
+            background-color: #3a86ff;
+            color: white;
+        }
+        
+        .subcategory-btn:hover:not(.active) {
+            background-color: #ddd;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2d3748;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #3a86ff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #4a5568;
+            color: #cbd5e0;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* Image Upload Styles */
+        .image-upload-container {
+            margin-bottom: 20px;
+        }
+        
+        .image-preview {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #ddd;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .upload-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3a86ff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .upload-btn:hover {
+            background: #2667cc;
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        /* Login Modal Styles */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        
+        .login-content {
+            background-color: white;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .login-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .login-btn {
+            flex: 1;
+            margin: 0 10px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .owner-btn {
+            background-color: #3a86ff;
+            color: white;
+        }
+        
+        .customer-btn {
+            background-color: #38b000;
+            color: white;
+        }
+        
+        .login-form {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .categories, .products, .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .login-buttons {
+                flex-direction: column;
+            }
+            
+            .login-btn {
+                margin: 5px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .categories, .products, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Modal -->
+    <div id="login-modal" class="login-modal">
+        <div class="login-content">
+            <span class="close-modal" id="close-login">&times;</span>
+            <h2>Welcome to ShopEasy</h2>
+            <p>Please select your login option</p>
+            
+            <div class="login-buttons">
+                <button class="login-btn owner-btn" id="owner-login-btn">Owner Login</button>
+                <button class="login-btn customer-btn" id="customer-login-btn">Continue as Customer</button>
+            </div>
+            
+            <div id="owner-login-form" class="login-form">
+                <div class="form-group">
+                    <label for="owner-password">Password</label>
+                    <input type="password" id="owner-password" class="form-control" placeholder="Enter owner password">
+                </div>
+                
+                <button class="btn" id="submit-owner-login">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Shop<span>Easy</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="electronics">Electronics</a></li>
+                        <li><a href="#" class="nav-link" data-page="clothing">Clothing</a></li>
+                        <li><a href="#" class="nav-link" data-page="jewelry">Jewelry</a></li>
+                        <li><a href="#" class="nav-link" data-page="homekitchen">Home & Kitchen</a></li>
+                        <li><a href="#" class="nav-link" id="add-product-link" style="display: none;">Add Product</a></li>
+                    </ul>
+                </nav>
+                <div class="header-icons">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="#" id="user-account"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Great Deals Just For You</h1>
+                <p>Shop from thousands of products at amazing prices in Indian Rupees</p>
+                <a href="#" class="btn">Shop Now</a>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="container">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="categories">
+                <div class="category-card" data-category="electronics">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1722&q=80');"></div>
+                    <div class="category-content">
+                        <h3>Electronics</h3>
+                        <a href="#" class="btn nav-link" data-page="electronics">Explore</a>
+                    </div>
+                </div>
+                <div class="category-card" data-category="clothing">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                    <div class="category-content">
+                        <h3>Clothing</h3>
+                        <a href="#" class="btn nav-link" data-page="clothing">Explore</a>
+                    </div>
+                </div>
+                <div class="category-card" data-category="jewelry">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1606760227093-3cbfb79ddb30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80');"></div>
+                    <div class="category-content">
+                        <h3>Jewelry</h3>
+                        <a href="#" class="btn nav-link" data-page="jewelry">Explore</a>
+                    </div>
+                </div>
+                <div class="category-card" data-category="homekitchen">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                    <div class="category-content">
+                        <h3>Home & Kitchen</h3>
+                        <a href="#" class="btn nav-link" data-page="homekitchen">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products" id="featured-products">
+                <!-- Products will be dynamically added here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Category Pages -->
+    <div id="electronics-page" class="page" style="display: none;">
+        <div class="category-header" style="background-color: #3a86ff;">
+            <div class="container">
+                <h1>Electronics</h1>
+                <p>Discover the latest gadgets and electronics</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="filter-section">
+                <h3 class="filter-title">Filter Products</h3>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="electronics-price">Price Range</label>
+                        <select id="electronics-price">
+                            <option value="all">All Prices</option>
+                            <option value="0-500">Under ₹500</option>
+                            <option value="500-1000">₹500 - ₹1000</option>
+                            <option value="1000-5000">₹1000 - ₹5000</option>
+                            <option value="5000+">Over ₹5000</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="electronics-brand">Brand</label>
+                        <select id="electronics-brand">
+                            <option value="all">All Brands</option>
+                            <option value="samsung">Samsung</option>
+                            <option value="apple">Apple</option>
+                            <option value="sony">Sony</option>
+                            <option value="lg">LG</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="electronics-sort">Sort By</label>
+                        <select id="electronics-sort">
+                            <option value="featured">Featured</option>
+                            <option value="low-high">Price: Low to High</option>
+                            <option value="high-low">Price: High to Low</option>
+                            <option value="rating">Customer Rating</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products" id="electronics-products">
+                <!-- Electronics products will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="clothing-page" class="page" style="display: none;">
+        <div class="category-header" style="background-color: #ff006e;">
+            <div class="container">
+                <h1>Clothing</h1>
+                <p>Discover the latest fashion trends</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="filter-section">
+                <h3 class="filter-title">Filter Products</h3>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="clothing-price">Price Range</label>
+                        <select id="clothing-price">
+                            <option value="all">All Prices</option>
+                            <option value="0-500">Under ₹500</option>
+                            <option value="500-1000">₹500 - ₹1000</option>
+                            <option value="1000-5000">₹1000 - ₹5000</option>
+                            <option value="5000+">Over ₹5000</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="clothing-brand">Brand</label>
+                        <select id="clothing-brand">
+                            <option value="all">All Brands</option>
+                            <option value="nike">Nike</option>
+                            <option value="adidas">Adidas</option>
+                            <option value="puma">Puma</option>
+                            <option value="zara">Zara</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="clothing-sort">Sort By</label>
+                        <select id="clothing-sort">
+                            <option value="featured">Featured</option>
+                            <option value="low-high">Price: Low to High</option>
+                            <option value="high-low">Price: High to Low</option>
+                            <option value="rating">Customer Rating</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Clothing Subcategories -->
+            <div class="subcategories" id="clothing-subcategories">
+                <button class="subcategory-btn active" data-subcategory="all">All</button>
+                <button class="subcategory-btn" data-subcategory="men">Men</button>
+                <button class="subcategory-btn" data-subcategory="women">Women</button>
+                <button class="subcategory-btn" data-subcategory="girls">Girls</button>
+                <button class="subcategory-btn" data-subcategory="boys">Boys</button>
+            </div>
+            
+            <div class="products" id="clothing-products">
+                <!-- Clothing products will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="jewelry-page" class="page" style="display: none;">
+        <div class="category-header" style="background-color: #ff9e00;">
+            <div class="container">
+                <h1>Jewelry</h1>
+                <p>Discover beautiful jewelry pieces</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="filter-section">
+                <h3 class="filter-title">Filter Products</h3>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="jewelry-price">Price Range</label>
+                        <select id="jewelry-price">
+                            <option value="all">All Prices</option>
+                            <option value="0-500">Under ₹500</option>
+                            <option value="500-1000">₹500 - ₹1000</option>
+                            <option value="1000-5000">₹1000 - ₹5000</option>
+                            <option value="5000+">Over ₹5000</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="jewelry-brand">Brand</label>
+                        <select id="jewelry-brand">
+                            <option value="all">All Brands</option>
+                            <option value="tanishq">Tanishq</option>
+                            <option value="malabar">Malabar</option>
+                            <option value="pcj">PCJ</option>
+                            <option value="caratlane">CaratLane</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="jewelry-sort">Sort By</label>
+                        <select id="jewelry-sort">
+                            <option value="featured">Featured</option>
+                            <option value="low-high">Price: Low to High</option>
+                            <option value="high-low">Price: High to Low</option>
+                            <option value="rating">Customer Rating</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products" id="jewelry-products">
+                <!-- Jewelry products will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="homekitchen-page" class="page" style="display: none;">
+        <div class="category-header" style="background-color: #38b000;">
+            <div class="container">
+                <h1>Home & Kitchen</h1>
+                <p>Discover products for your home and kitchen</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="filter-section">
+                <h3 class="filter-title">Filter Products</h3>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="homekitchen-price">Price Range</label>
+                        <select id="homekitchen-price">
+                            <option value="all">All Prices</option>
+                            <option value="0-500">Under ₹500</option>
+                            <option value="500-1000">₹500 - ₹1000</option>
+                            <option value="1000-5000">₹1000 - ₹5000</option>
+                            <option value="5000+">Over ₹5000</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="homekitchen-brand">Brand</label>
+                        <select id="homekitchen-brand">
+                            <option value="all">All Brands</option>
+                            <option value="prestige">Prestige</option>
+                            <option value="milton">Milton</option>
+                            <option value="bajaj">Bajaj</option>
+                            <option value="hometown">Hometown</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="homekitchen-sort">Sort By</label>
+                        <select id="homekitchen-sort">
+                            <option value="featured">Featured</option>
+                            <option value="low-high">Price: Low to High</option>
+                            <option value="high-low">Price: High to Low</option>
+                            <option value="rating">Customer Rating</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products" id="homekitchen-products">
+                <!-- Home & Kitchen products will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="add-product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Add New Product</h2>
+            <form id="add-product-form">
+                <input type="hidden" id="product-id" value="">
+                <div class="form-group">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" id="product-name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-price">Price (₹)</label>
+                    <input type="number" id="product-price" class="form-control" min="0" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-category">Category</label>
+                    <select id="product-category" class="form-control" required>
+                        <option value="">Select Category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="jewelry">Jewelry</option>
+                        <option value="homekitchen">Home & Kitchen</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="clothing-subcategory-group" style="display: none;">
+                    <label for="product-subcategory">Clothing Subcategory</label>
+                    <select id="product-subcategory" class="form-control">
+                        <option value="men">Men</option>
+                        <option value="women">Women</option>
+                        <option value="girls">Girls</option>
+                        <option value="boys">Boys</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-description">Description</label>
+                    <textarea id="product-description" class="form-control" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-link">Product Link (Amazon/Flipkart)</label>
+                    <input type="url" id="product-link" class="form-control" placeholder="https://..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Product Image</label>
+                    <div class="image-upload-container">
+                        <div class="image-preview" id="image-preview">
+                            <span>Image preview will appear here</span>
+                        </div>
+                        <input type="file" id="file-input" accept="image/*">
+                        <label for="file-input" class="upload-btn">
+                            <i class="fas fa-upload"></i> Choose Image
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;" id="form-submit-btn">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ShopEasy</h3>
+                    <p>Your one-stop destination for all shopping needs. We offer quality products at the best prices.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="electronics">Electronics</a></li>
+                        <li><a href="#" class="nav-link" data-page="clothing">Clothing</a></li>
+                        <li><a href="#" class="nav-link" data-page="jewelry">Jewelry</a></li>
+                        <li><a href="#" class="nav-link" data-page="homekitchen">Home & Kitchen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Shipping Information</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@shopeasy.com</p>
+                    <p>Phone: +91 9876543210</p>
+                    <p>Address: 123 Shopping Street, Mumbai, India</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ShopEasy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize products from localStorage or use default products
+        let products = JSON.parse(localStorage.getItem('shopeasy-products')) || [
+            {
+                id: 1,
+                name: "Wireless Headphones",
+                price: 3499,
+                category: "electronics",
+                subcategory: "",
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+                description: "Noise cancellation with 20hr battery life",
+                link: "https://www.amazon.in/demo-headphone",
+                brand: "sony",
+                rating: 4.5
+            },
+            {
+                id: 2,
+                name: "Smart Watch",
+                price: 2899,
+                category: "electronics",
+                subcategory: "",
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1799&q=80",
+                description: "Fitness tracker with heart rate monitor",
+                link: "https://www.flipkart.com/demo-smartwatch",
+                brand: "samsung",
+                rating: 4.2
+            },
+            {
+                id: 3,
+                name: "Women's Summer Dress",
+                price: 1499,
+                category: "clothing",
+                subcategory: "women",
+                image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+                description: "Floral print summer dress - cotton blend",
+                link: "https://www.myntra.com/demo-dress",
+                brand: "zara",
+                rating: 4.7
+            },
+            {
+                id: 4,
+                name: "Men's Leather Wallet",
+                price: 799,
+                category: "clothing",
+                subcategory: "men",
+                image: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                description: "Genuine leather wallet with multiple card slots",
+                link: "https://www.amazon.in/demo-wallet",
+                brand: "puma",
+                rating: 4.3
+            },
+            {
+                id: 5,
+                name: "Men's Running Shoes",
+                price: 2199,
+                category: "clothing",
+                subcategory: "men",
+                image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+                description: "Men's lightweight running shoes - size 6-11",
+                link: "https://www.flipkart.com/demo-shoes",
+                brand: "nike",
+                rating: 4.6
+            },
+            {
+                id: 6,
+                name: "Boys T-Shirt Pack",
+                price: 999,
+                category: "clothing",
+                subcategory: "boys",
+                image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+                description: "Pack of 3 cotton t-shirts for boys",
+                link: "https://www.amazon.in/demo-tshirt",
+                brand: "adidas",
+                rating: 4.4
+            },
+            {
+                id: 7,
+                name: "Girls Summer Dress",
+                price: 1299,
+                category: "clothing",
+                subcategory: "girls",
+                image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+                description: "Colorful summer dress for girls",
+                link: "https://www.myntra.com/demo-girls-dress",
+                brand: "zara",
+                rating: 4.8
+            },
+            {
+                id: 8,
+                name: "Gold Plated Earrings",
+                price: 1899,
+                category: "jewelry",
+                subcategory: "",
+                image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+                description: "Traditional jhumkas with modern design",
+                link: "https://www.myntra.com/demo-earrings",
+                brand: "tanishq",
+                rating: 4.5
+            },
+            {
+                id: 9,
+                name: "Bluetooth Speaker",
+                price: 1599,
+                category: "electronics",
+                subcategory: "",
+                image: "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80",
+                description: "Waterproof portable speaker with 12W output",
+                link: "https://www.amazon.in/demo-speaker",
+                brand: "jbl",
+                rating: 4.1
+            },
+            {
+                id: 10,
+                name: "Non-stick Cookware Set",
+                price: 3999,
+                category: "homekitchen",
+                subcategory: "",
+                image: "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1762&q=80",
+                description: "10-piece kitchen cookware set with utensils",
+                link: "https://www.flipkart.com/demo-cookware",
+                brand: "prestige",
+                rating: 4.7
+            }
+        ];
+
+        // Save products to localStorage
+        function saveProducts() {
+            localStorage.setItem('shopeasy-products', JSON.stringify(products));
+        }
+
+        // DOM Elements
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const addProductLink = document.getElementById('add-product-link');
+        const addProductModal = document.getElementById('add-product-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const addProductForm = document.getElementById('add-product-form');
+        const productIdInput = document.getElementById('product-id');
+        const modalTitle = document.getElementById('modal-title');
+        const formSubmitBtn = document.getElementById('form-submit-btn');
+        const fileInput = document.getElementById('file-input');
+        const imagePreview = document.getElementById('image-preview');
+        const loginModal = document.getElementById('login-modal');
+        const closeLogin = document.getElementById('close-login');
+        const ownerLoginBtn = document.getElementById('owner-login-btn');
+        const customerLoginBtn = document.getElementById('customer-login-btn');
+        const ownerLoginForm = document.getElementById('owner-login-form');
+        const submitOwnerLogin = document.getElementById('submit-owner-login');
+        const userAccount = document.getElementById('user-account');
+        const productCategorySelect = document.getElementById('product-category');
+        const clothingSubcategoryGroup = document.getElementById('clothing-subcategory-group');
+        let uploadedImage = null;
+        let isOwnerLoggedIn = false;
+        let currentSubcategory = 'all';
+
+        // Show a specific page
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById(`${pageId}-page`).style.display = 'block';
+            window.scrollTo(0, 0);
+            
+            // Render products if it's a category page
+            if (pageId !== 'home') {
+                renderProducts(pageId, `${pageId}-products`);
+            } else {
+                renderFeaturedProducts();
+            }
+        }
+
+        // Filter products based on criteria
+        function filterProducts(products, category, filters = {}, subcategory = 'all') {
+            let filteredProducts = products.filter(product => product.category === category);
+            
+            // Apply subcategory filter for clothing
+            if (category === 'clothing' && subcategory !== 'all') {
+                filteredProducts = filteredProducts.filter(product => product.subcategory === subcategory);
+            }
+            
+            // Apply price filter
+            if (filters.price && filters.price !== 'all') {
+                const [min, max] = filters.price.split('-').map(val => val === '+' ? Infinity : parseInt(val));
+                filteredProducts = filteredProducts.filter(product => {
+                    if (filters.price === '5000+') {
+                        return product.price >= 5000;
+                    } else {
+                        return product.price >= min && product.price <= max;
+                    }
+                });
+            }
+            
+            // Apply brand filter
+            if (filters.brand && filters.brand !== 'all') {
+                filteredProducts = filteredProducts.filter(product => product.brand === filters.brand);
+            }
+            
+            // Apply sorting
+            if (filters.sort) {
+                switch(filters.sort) {
+                    case 'low-high':
+                        filteredProducts.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'high-low':
+                        filteredProducts.sort((a, b) => b.price - a.price);
+                        break;
+                    case 'rating':
+                        filteredProducts.sort((a, b) => b.rating - a.rating);
+                        break;
+                    default:
+                        // Default sorting (featured)
+                        break;
+                }
+            }
+            
+            return filteredProducts;
+        }
+
+        // Render products for a category
+        function renderProducts(category, containerId, filters = {}, subcategory = 'all') {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            const filteredProducts = filterProducts(products, category, filters, subcategory);
+            
+            if (filteredProducts.length === 0) {
+                container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; padding: 40px;">No products found matching your criteria.</p>';
+                return;
+            }
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                // Only show edit/delete menu if owner is logged in
+                const menuHtml = isOwnerLoggedIn ? `
+                    <div class="product-menu">
+                        <div class="menu-toggle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="menu-dropdown">
+                            <div class="menu-item edit" data-id="${product.id}">
+                                <i class="fas fa-edit"></i> Edit
+                            </div>
+                            <div class="menu-item delete" data-id="${product.id}">
+                                <i class="fas fa-trash"></i> Delete
+                            </div>
+                        </div>
+                    </div>
+                ` : '';
+                
+                productCard.innerHTML = `
+                    ${menuHtml}
+                    <div class="product-img" style="background-image: url('${product.image}');"></div>
+                    <div class="product-content">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="price"><span class="rupee-icon">₹</span>${product.price.toLocaleString('en-IN')}</div>
+                        <div class="rating">
+                            ${getRatingStars(product.rating)}
+                            <span>(${product.rating}/5)</span>
+                        </div>
+                        <a href="${product.link}" target="_blank" class="product-link">View on Store</a>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+            
+            // Add event listeners to the menu toggles if owner is logged in
+            if (isOwnerLoggedIn) {
+                attachMenuListeners();
+            }
+        }
+
+        // Generate rating stars HTML
+        function getRatingStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Render featured products
+        function renderFeaturedProducts() {
+            const container = document.getElementById('featured-products');
+            container.innerHTML = '';
+            
+            // Show first 4 products as featured
+            const featuredProducts = products.slice(0, 4);
+            
+            if (featuredProducts.length === 0) {
+                container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; padding: 40px;">No featured products available.</p>';
+                return;
+            }
+            
+            featuredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                // Only show edit/delete menu if owner is logged in
+                const menuHtml = isOwnerLoggedIn ? `
+                    <div class="product-menu">
+                        <div class="menu-toggle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="menu-dropdown">
+                            <div class="menu-item edit" data-id="${product.id}">
+                                <i class="fas fa-edit"></i> Edit
+                            </div>
+                            <div class="menu-item delete" data-id="${product.id}">
+                                <i class="fas fa-trash"></i> Delete
+                            </div>
+                        </div>
+                    </div>
+                ` : '';
+                
+                productCard.innerHTML = `
+                    ${menuHtml}
+                    <div class="product-img" style="background-image: url('${product.image}');"></div>
+                    <div class="product-content">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="price"><span class="rupee-icon">₹</span>${product.price.toLocaleString('en-IN')}</div>
+                        <div class="rating">
+                            ${getRatingStars(product.rating)}
+                            <span>(${product.rating}/5)</span>
+                        </div>
+                        <a href="${product.link}" target="_blank" class="product-link">View on Store</a>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+            
+            // Add event listeners to the menu toggles if owner is logged in
+            if (isOwnerLoggedIn) {
+                attachMenuListeners();
+            }
+        }
+
+        // Attach event listeners to menu toggles
+        function attachMenuListeners() {
+            // Toggle menu dropdown
+            document.querySelectorAll('.menu-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const dropdown = this.nextElementSibling;
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.menu-dropdown.show').forEach(d => {
+                        if (d !== dropdown) {
+                            d.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle this dropdown
+                    dropdown.classList.toggle('show');
+                });
+            });
+            
+            // Close dropdowns when clicking elsewhere
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.menu-dropdown.show').forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            });
+            
+            // Edit product
+            document.querySelectorAll('.menu-item.edit').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    editProduct(productId);
+                });
+            });
+            
+            // Delete product
+            document.querySelectorAll('.menu-item.delete').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    deleteProduct(productId);
+                });
+            });
+        }
+
+        // Edit product
+        function editProduct(id) {
+            const product = products.find(p => p.id === id);
+            if (product) {
+                // Fill the form with product data
+                document.getElementById('product-name').value = product.name;
+                document.getElementById('product-price').value = product.price;
+                document.getElementById('product-category').value = product.category;
+                document.getElementById('product-description').value = product.description;
+                document.getElementById('product-link').value = product.link;
+                productIdInput.value = product.id;
+                
+                // Show subcategory field if it's a clothing product
+                if (product.category === 'clothing') {
+                    clothingSubcategoryGroup.style.display = 'block';
+                    document.getElementById('product-subcategory').value = product.subcategory || 'men';
+                } else {
+                    clothingSubcategoryGroup.style.display = 'none';
+                }
+                
+                // Set image preview
+                imagePreview.innerHTML = `<img src="${product.image}" alt="Product Image">`;
+                uploadedImage = product.image;
+                
+                // Change form title and button text
+                modalTitle.textContent = 'Edit Product';
+                formSubmitBtn.textContent = 'Update Product';
+                
+                // Show the modal
+                addProductModal.style.display = 'block';
+            }
+        }
+
+        // Delete product
+        function deleteProduct(id) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                products = products.filter(p => p.id !== id);
+                saveProducts();
+                
+                // Refresh the displayed products
+                const currentPage = document.querySelector('.page:not([style*="display: none"])').id.replace('-page', '');
+                if (currentPage === 'home') {
+                    renderFeaturedProducts();
+                } else {
+                    renderProducts(currentPage, `${currentPage}-products`);
+                }
+                
+                alert('Product deleted successfully!');
+            }
+        }
+
+        // Handle image upload
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.innerHTML = `<img src="${e.target.result}" alt="Product Image">`;
+                    uploadedImage = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle owner login
+        function handleOwnerLogin() {
+            const password = document.getElementById('owner-password').value;
+            
+            // Check if password is correct (password is "123")
+            if (password === "123") {
+                isOwnerLoggedIn = true;
+                addProductLink.style.display = 'block';
+                loginModal.style.display = 'none';
+                alert('Owner login successful!');
+                
+                // Refresh the page to show edit/delete options
+                const currentPage = document.querySelector('.page:not([style*="display: none"])').id.replace('-page', '');
+                if (currentPage === 'home') {
+                    renderFeaturedProducts();
+                } else {
+                    renderProducts(currentPage, `${currentPage}-products`);
+                }
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+        }
+
+        // Handle customer login
+        function handleCustomerLogin() {
+            isOwnerLoggedIn = false;
+            addProductLink.style.display = 'none';
+            loginModal.style.display = 'none';
+            
+            // Refresh the page to hide edit/delete options
+            const currentPage = document.querySelector('.page:not([style*="display: none"])').id.replace('-page', '');
+            if (currentPage === 'home') {
+                renderFeaturedProducts();
+            } else {
+                renderProducts(currentPage, `${currentPage}-products`);
+            }
+        }
+
+        // Event Listeners
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                showPage(page);
+            });
+        });
+
+        addProductLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Reset form
+            addProductForm.reset();
+            productIdInput.value = '';
+            imagePreview.innerHTML = '<span>Image preview will appear here</span>';
+            uploadedImage = null;
+            clothingSubcategoryGroup.style.display = 'none';
+            
+            // Change form title and button text
+            modalTitle.textContent = 'Add New Product';
+            formSubmitBtn.textContent = 'Add Product';
+            
+            // Show the modal
+            addProductModal.style.display = 'block';
+        });
+
+        // Show/hide subcategory field based on category selection
+        productCategorySelect.addEventListener('change', function() {
+            if (this.value === 'clothing') {
+                clothingSubcategoryGroup.style.display = 'block';
+            } else {
+                clothingSubcategoryGroup.style.display = 'none';
+            }
+        });
+
+        closeModal.addEventListener('click', () => {
+            addProductModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === addProductModal) {
+                addProductModal.style.display = 'none';
+            }
+        });
+
+        addProductForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('product-name').value;
+            const price = parseFloat(document.getElementById('product-price').value);
+            const category = document.getElementById('product-category').value;
+            const description = document.getElementById('product-description').value;
+            const link = document.getElementById('product-link').value;
+            const id = productIdInput.value;
+            const subcategory = category === 'clothing' ? document.getElementById('product-subcategory').value : '';
+            
+            if (name && price && category && description && link && uploadedImage) {
+                if (id) {
+                    // Update existing product
+                    const index = products.findIndex(p => p.id === parseInt(id));
+                    if (index !== -1) {
+                        products[index] = {
+                            ...products[index],
+                            name,
+                            price,
+                            category,
+                            subcategory,
+                            description,
+                            link,
+                            image: uploadedImage
+                        };
+                        
+                        saveProducts();
+                        alert(`Product "${name}" has been updated successfully!`);
+                    }
+                } else {
+                    // Create new product object
+                    const newProduct = {
+                        id: products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1,
+                        name,
+                        price,
+                        category,
+                        subcategory,
+                        image: uploadedImage,
+                        description,
+                        link,
+                        brand: "generic",
+                        rating: 4.0
+                    };
+                    
+                    // Add to products array
+                    products.push(newProduct);
+                    
+                    // Save to localStorage
+                    saveProducts();
+                    
+                    // Show success message
+                    alert(`Product "${name}" has been added successfully to the ${category} category!`);
+                }
+                
+                // Reset form
+                addProductForm.reset();
+                productIdInput.value = '';
+                imagePreview.innerHTML = '<span>Image preview will appear here</span>';
+                uploadedImage = null;
+                clothingSubcategoryGroup.style.display = 'none';
+                
+                // Close modal
+                addProductModal.style.display = 'none';
+                
+                // Refresh the displayed products
+                const currentPage = document.querySelector('.page:not([style*="display: none"])').id.replace('-page', '');
+                if (currentPage === 'home') {
+                    renderFeaturedProducts();
+                } else {
+                    renderProducts(currentPage, `${currentPage}-products`);
+                }
+            } else {
+                alert('Please fill in all fields and upload an image');
+            }
+        });
+
+        // Login modal event listeners
+        ownerLoginBtn.addEventListener('click', () => {
+            ownerLoginForm.style.display = 'block';
+        });
+
+        customerLoginBtn.addEventListener('click', () => {
+            handleCustomerLogin();
+        });
+
+        submitOwnerLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleOwnerLogin();
+        });
+
+        closeLogin.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        userAccount.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Show login modal when user icon is clicked
+            loginModal.style.display = 'block';
+            // Reset login form
+            ownerLoginForm.style.display = 'none';
+            document.getElementById('owner-password').value = '';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+
+        // Filter functionality
+        function setupFilters() {
+            // Clothing subcategories
+            const clothingSubcategoryButtons = document.querySelectorAll('#clothing-subcategories .subcategory-btn');
+            clothingSubcategoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    clothingSubcategoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get the subcategory
+                    currentSubcategory = this.getAttribute('data-subcategory');
+                    
+                    // Get current filter values
+                    const priceFilter = document.getElementById('clothing-price').value;
+                    const brandFilter = document.getElementById('clothing-brand').value;
+                    const sortFilter = document.getElementById('clothing-sort').value;
+                    
+                    // Apply filters
+                    renderProducts('clothing', 'clothing-products', {
+                        price: priceFilter,
+                        brand: brandFilter,
+                        sort: sortFilter
+                    }, currentSubcategory);
+                });
+            });
+            
+            // Set up filter change listeners for each category
+            const categories = ['electronics', 'clothing', 'jewelry', 'homekitchen'];
+            
+            categories.forEach(category => {
+                const priceSelect = document.getElementById(`${category}-price`);
+                const brandSelect = document.getElementById(`${category}-brand`);
+                const sortSelect = document.getElementById(`${category}-sort`);
+                
+                if (priceSelect && brandSelect && sortSelect) {
+                    const applyFilters = () => {
+                        const filters = {
+                            price: priceSelect.value,
+                            brand: brandSelect.value,
+                            sort: sortSelect.value
+                        };
+                        
+                        renderProducts(category, `${category}-products`, filters, category === 'clothing' ? currentSubcategory : 'all');
+                    };
+                    
+                    priceSelect.addEventListener('change', applyFilters);
+                    brandSelect.addEventListener('change', applyFilters);
+                    sortSelect.addEventListener('change', applyFilters);
+                }
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show login modal first
+            loginModal.style.display = 'block';
+            
+            // Initially hide the Add Product link
+            addProductLink.style.display = 'none';
+            
+            // Show home page but products won't render until after login
+            showPage('home');
+            
+            // Set up filter functionality
+            setupFilters();
+        });
+    </script>
+</body>
+</html>
